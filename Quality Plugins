@@ -5,3 +5,7 @@ FindBugs Plugin
 JaCoCo Plugin
 JDepend Plugin
 PMD Plugin
+
+For deployment:
+----------------
+maven-publish---> for publishing artifacts
