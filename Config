@@ -1,0 +1,80 @@
+Excluding transitive dependency for a particular configuration
+-----------------------------------------------------------------
+configurations {
+    implementation {
+        exclude group: 'javax.jms', module: 'jms'
+        exclude group: 'com.sun.jdmk', module: 'jmxtools'
+        exclude group: 'com.sun.jmx', module: 'jmxri'
+    }
+}
+
+dependencies {
+    implementation 'log4j:log4j:1.2.15'
+}
+------------------------------------------------------------------------
+Usage of Maven central repository
+
+build.gradle
+
+repositories {
+    mavenCentral()
+}
+-----------------------------------------------------------------------
+
+Declaring a custom repository by URL
+
+build.gradle
+
+repositories {
+    maven {
+        url "http://repo.mycompany.com/maven2"
+    }
+}
+--------------------------------------------------------------------
+Build.gradle with Nexus
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+repositories {
+    maven {
+          url "http://localhost:8081/nexus/content/groups/public"
+    }
+}
+
+dependencies {
+    testCompile "junit:junit:3.8.1"
+    compile "org.jbundle.util:org.jbundle.util.jbackup:2.0.0"
+    compile "net.sf.webtestfixtures:webtestfixtures:2.0.1.3"
+}
+
+uploadArchives {
+    repositories {
+       mavenDeployer {
+             repository(url: "http://localhost:8081/nexus/content/repositories/snapshots") {
+             authentication(userName: "admin", password: "admin123")
+}
+             pom.version = "1.0-SNAPSHOT"
+             pom.artifactId = "simple-project"
+             pom.groupId = "com.example"
+       }
+    }
+}
+----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
