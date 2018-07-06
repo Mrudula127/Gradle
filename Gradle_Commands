@@ -1,0 +1,26 @@
+
+gradle –q help –task <task name>	Provides the usage information (such as path, type, description, group) about a specific task or multiple tasks.
+gradle –q dependencies	Provides a list of dependencies of the selected project.
+gradle -q api:dependencies --configuration <task name>	Provides the list of limited dependencies respective to configuration.
+gradle –q buildEnvironment	Provides the list of build script dependencies.
+gradle –q dependencyInsight	Provides an insight into a particular dependency.
+Gradle –q properties	Provides the list of properties of the selected project.
+gradle clean build
+gradle projects==>for listing all sub projects
+gradle <taskname>==>for running a task
+
+Excluding tasks:
+gradle dist --exclude-task test
+
+gradle test --continue  ===>continue build even in failures
+gradle myTask --scan====>This will give you a link to a web-based report, where you can find dependency information like this.
+gradle dependencies===>For listing dependencies
+
+
+For Gradle Auto Compete:https://github.com/gradle/gradle-completion
+
+Continuous Build:
+Continuous Build allows you to automatically re-execute the requested tasks when task inputs change.
+For example, you can continuously run the test task and all dependent tasks by running:
+❯ gradle test --continuous
+ 
